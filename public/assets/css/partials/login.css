@@ -1,0 +1,85 @@
+.content__login {
+  background: #f0f2f5;
+
+  display: flex;
+  justify-content: space-between;
+  height: 100vh;
+}
+.content__login .logo a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.content__login .logo img {
+  width: 50%;
+}
+
+.content__login .banner__login {
+  background: linear-gradient(#000000be, #cca332de),
+    url(../../img/bg-tela/bg-login.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 80%;
+
+  display: flex;
+  align-items: center;
+}
+
+.content__login .banner__form_login {
+  width: 34%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-direction: column;
+}
+
+input::placeholder {
+  font-size: 0.9rem;
+}
+
+input {
+  background: white;
+  border: 0 !important;
+}
+
+form button {
+  font-size: 1rem !important;
+  height: 55px !important;
+
+  background: #cca332de !important;
+
+  color: white !important;
+}
+
+.remember__password {
+  display: flex;
+  justify-content: space-between;
+}
+
+p a {
+  color: #cca332de;
+  text-decoration: underline;
+}
+
+.logo {
+  text-align: center;
+  color: #252525de;
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .content__login .banner__login {
+    display: none;
+  }
+
+  .content__login .banner__form_login {
+    width: 100%;
+  }
+}
+
+/* Tablets */
+@media (min-width: 720px) and (max-width: 1024px) {
+}

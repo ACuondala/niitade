@@ -1,0 +1,162 @@
+body {
+  overflow: hidden;
+}
+.content__login {
+  background: #f0f2f5;
+
+  display: flex;
+  justify-content: space-between;
+  height: 100vh;
+}
+
+.content__login .banner__register {
+  background: linear-gradient(#000000be, #cca332de),
+    url(../../img/bg-tela/bg-register.jpg);
+  background-size: cover;
+  /* background-position: center; */
+  background-repeat: no-repeat;
+  width: 50%;
+
+  display: flex;
+  align-items: center;
+}
+
+.content__login .form__register {
+  width: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-direction: column;
+}
+
+input::placeholder {
+  font-size: 0.9rem;
+}
+
+input {
+  background: none !important;
+  border: 1px solid #ccc !important;
+}
+
+form button {
+  font-size: 1rem !important;
+  height: 55px !important;
+
+  background: #cca332de !important;
+
+  color: white !important;
+}
+
+.logo {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.logo a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo a img {
+  width: 60%;
+}
+
+.avatar__perfil {
+  width: 120px;
+  height: 120px;
+  background: #cca332de;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 0.2rem;
+}
+
+/* INPUT__FILE */
+#picture__input {
+  display: none;
+}
+
+.avatar__photo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.picture {
+  width: 140px;
+  height: 140px;
+  background: #ddd;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #aaa;
+  border: 1px dashed #aaa;
+  cursor: pointer;
+
+  text-align: center;
+  font-size: 0.9rem;
+
+  transition: color 300ms ease-in-out, background 300ms ease-in-out;
+}
+
+.picture:hover {
+  color: #777;
+  background: #ccc;
+}
+
+.picture__img {
+  width: 130px;
+  height: 130px;
+}
+
+.inputBox select {
+  width: 100%;
+  padding: 15px !important;
+  /*height: 100%;*/
+  font-size: 0.9rem;
+  border: 1px solid rgba(83, 83, 83, 0.25) !important;
+  background: #f2f2f2 !important;
+}
+
+#step__one {
+  height: 49vh;
+  /*margin-top: 0.7rem;*/
+  overflow-y: scroll !important;
+}
+
+.form-group input[type="submit"] {
+  background-color: #cca332de !important;
+  color: white !important;
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .content__login .banner__register {
+    display: none;
+  }
+
+  .content__login .form__register {
+    width: 100%;
+  }
+
+  .logo a img {
+    width: 50%;
+  }
+
+  .picture {
+    height: 90px;
+    width: 90px;
+  }
+}
+
+/* Tablets */
+@media (min-width: 720px) and (max-width: 1024px) {
+}
