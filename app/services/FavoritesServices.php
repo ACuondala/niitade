@@ -10,12 +10,18 @@ use Symfony\Component\HttpFoundation\Response;
 class FavoritesServices{
 
     public function getAll(){
-        $favorites=Favorite::with('post')->where('user_id',Auth::user()->id)->latest();
+        //$favorites=Favorite::with('post')->where('user_id',Auth::user()->id)->latest()->get();
+        $favorites=Post::whereIn('id',function($query) {
+            $query->select('favorites.user_id');
+            $query->where('user_id',Auth::user()->id);
+            $query->from('favorites');
+        })->latest()->get();
         /*return response()->json([
             'status'=>Response::HTTP_OK,
             'message'=>"Favorites listed successfully",
             'favorites'=>$favorites
         ]);*/
+        //dd($favorites);
         return view('favourites.favourites',['favorites'=>$favorites]);
     }
 
@@ -37,6 +43,10 @@ class FavoritesServices{
             $post->favorites()->create(['user_id' => $user->id]);
             return response()->json(['favorited' => true]);
         }
+    }
+
+    public function delete( $request){
+        
     }
 
 

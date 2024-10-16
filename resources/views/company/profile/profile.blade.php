@@ -37,7 +37,7 @@
                     <div class="p-1 content__ranking">
                         <div class="item">
                             <span>Saldo: </span>
-                            <strong>99.99kz</strong>
+                            <strong>{{ number_format(Auth::user()->money, 2,',','.') }}kz</strong>
                         </div>
                         <div class="item">
                             <span>Favoritos: </span>
@@ -68,7 +68,7 @@
 
                                     <div class="row__seetings dropdown-settings">
                                         @if(Auth::user()->id == $companies->user_id)
-                                            <button class="shadow-sm dropdown__nitadi">Definições
+                                            <button class="shadow-sm dropdown__nitadi mobile__dropdown__nitadi">Definições
                                                 <div class="dropdown-content__nitadi">
                                                     <ul>
                                                         <li>
@@ -259,6 +259,21 @@
 
      <script>
         $(document).ready(function(){
+            let visitor={{ Auth::user()->id }};
+            let companies={{ $companies->id }};
+            //console.log(visitor);
+            $.ajax({
+                url: "{{ route('companyprofile.viewcount') }}",
+                type: "POST",
+                data: {
+                    _token: "{{ csrf_token() }}",
+                    profile:visitor,
+                    company:companies
+                },
+                success: function(response) {
+                    console.log("Profile view counted or already counted");
+                }
+            });
 
             $(".follower").on("click", function(){
                 var company_id=$("#follower").data("id");
@@ -290,6 +305,9 @@
                     }
                 });
             });
+
+
+
         });
     </script>
 @endsection

@@ -28,6 +28,8 @@ class Post extends Model
     public function public(){return $this->belongsTo(ExpecificPublic::class);}
     public function postLink(){return $this->belongsTo(PostLink::class);}
 
+    public function product(){return $this->belongsTo(Products::class);}
+
     public function contents(){return $this->hasMany(PostContent::class);}
 
     public function company(){return $this->belongsTo(Company::class);}

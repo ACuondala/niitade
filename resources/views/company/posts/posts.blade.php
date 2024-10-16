@@ -50,47 +50,43 @@
 
                 {{-- Feed Content --}}
                 <div class="feed__content" >
-                    <div class="feed__background m-0" >
-                        @if($post->contents->count() <= 1)
-                            @foreach ($post->contents as  $content)
-                                <img src="{{ asset($content->files) }}" alt="Foto Postada" class="pictures d-block w-100" />
-                            @endforeach
-                        @else
+                    @if($post->contents->count() <= 1)
+                        <div class="feed__background m-0" >
 
-                            @foreach ($post->contents as  $content)
-                                <img src="{{ asset($content->files) }}" alt="Foto Postada" class="pictures d-block w-100" />
-                            @endforeach
+                                @foreach ($post->contents as  $content)
+                                    <img src="{{ asset($content->files) }}" alt="Foto Postada" class="pictures d-block w-100" />
+                                @endforeach
 
-                            {{--
-                            <div>
-                                <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
-
-                                    <div class="carousel-inner">
-                                        @foreach ($post->contents as  $content)
-                                            <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
-                                                <img src="{{ asset($content->files) }}" alt="Foto Postada" class="d-block w-100 pictures" />
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
-                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                        <span class="visually-hidden">Previous</span>
-                                    </button>
-                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="next">
-                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                        <span class="visually-hidden">Next</span>
-                                    </button>
+                        </div>
+                    @else
+                    <div id="carouselExample{{ $post->id }}" class="carousel slide" data-bs-interval="false">
+                        <div class="carousel-inner">
+                            @foreach ($post->contents as $key => $content)
+                            <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
+                                <div class="carousel-caption ">
+                                    <span>{{ $key + 1 }} / {{ $post->contents->count() }}</span>
                                 </div>
-                                {{--  <div class="carousel-indicators">
-                                    @foreach($post->contents as $image)
-                                        <button type="button" data-target="#carouselExampleIndicators" data-bs-slide-to="{{ $loop->index }}" class="{{ $loop->first ? 'active' : '' }}" aria-current="true" aria-label="Slide {{ $loop->index + 1 }}"></button>
-                                    @endforeach
-                                </div> --}
-                            </div>
-                            --}}
-                        @endif
+                                <img src="{{ asset($content->files) }}" alt="Foto Postada" class="pictures d-block w-100" />
 
+                            </div>
+
+                            @endforeach
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample{{ $post->id }}" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample{{ $post->id }}" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                        <ol class="carousel-indicators">
+                            @foreach ($post->contents as $key => $content)
+                                <li data-bs-target="#carouselExample{{ $post->id }}" data-bs-slide-to="{{ $key }}" class="{{ $key == 0 ? 'active' : '' }}"></li>
+                            @endforeach
+                        </ol>
                     </div>
+                    @endif
 
 
 
@@ -123,10 +119,11 @@
                             @endif
                         </div>
                         <h3>{{ $post->titlePost }}</h3>
-                        <p>
+                        <p class="text-content" style="text-align:justify;">
                             {{ $post->description }}
 
                         </p>
+                        <button class="read-more-link" style="margin-top:0px;">Ver mais</button>
                     </div>
 
                     <div class="feed__content_reaction">
@@ -159,7 +156,7 @@
 
                                 </button>
 
-                                <button class="add comment" data-toggle="modal" data-target="#modal__comments{{ $post->id }}">
+                                <button class="add comment" data-feed="{{ $post->id }}" data-toggle="modal" data-target="#modal__comments{{ $post->id }}">
                                     <i class="fal fa-comment"></i>
                                     <small>{{ $post->comment()->count() }}</small>
                                 </button>
@@ -320,7 +317,7 @@
                                 </button>
                         </div>
                         <div class="modal-body" >
-                            @foreach ($comments as $comment)
+                            {{-- @foreach ($comments as $comment)
                             <div class="comments">
                                 <img src="{{$comment->user->images}}" alt="User Avatar">
                                 <div>
@@ -334,22 +331,22 @@
                                     </div>
                                 </div>
                             </div>
-                            @endforeach
+                            @endforeach --}}
                         </div>
 
                         <div class="modal-footer">
 
-                                <form id="comment_form" class="row" >
+                                <form id="comment_form_{{ $post->id }}" class="row" >
 
 
                                         @auth
-                                           <input type="hidden" name="post_id" value="{{ $post->id }}">
-                                            <input type="text" name="content" class="form-control comtent" placeholder="Comenta como {{ Auth::user()->firstname }} {{ Auth::user()->lastname }}"  id="">
+                                           <input type="hidden" class="postId" name="post_id" value="{{ $post->id }}">
+                                            <input type="text" value="" id="content_{{ $post->id }}" name="content" class="form-control " placeholder="Comenta como {{ Auth::user()->firstname }} {{ Auth::user()->lastname }}" required>
                                         @endauth
 
 
 
-                                        <button type="button" class="form-control btnn"><i class="bi bi-send-fill" style="color: #fff;"></i></button>
+                                        <button type="button" class="form-control btnn" data-postid="{{ $post->id }}"><i class="bi bi-send-fill" style="color: #fff;"></i></button>
 
                                 </form>
 
@@ -362,7 +359,6 @@
 
 
 
-    @include('company.posts.content')
 
 
 
@@ -372,35 +368,35 @@
 
 <script>
 
-
     let page = 1; // Página atual para a paginação
     const perPage = 3; // Quantidade de comentários por página
 
     //alert (post);
-    function displayComments() {
+    function displayComments(post) {
               // Assuming comments is an array of comment objects
               $('#loading').show(); // Mostra o indicador de carregamento
 
           var commentsSection = $('.modal-body');
-          var post__id=$("#staticBackdropLabel").data("id");
-            console.log(post__id);
+          var post__id=post;
+          //console.log(post__id);
+          commentsSection.empty();
           $.ajax({
               type:"GET",
               url:"/comment/"+post__id,
               data:{'post_id':post__id},
               success:function(response){
 
-                  console.log(response)
+                  //console.log(response)
                   commentsSection.empty();
                     response.comments.forEach(comment => {
-                        commentsSection.append(`<div class="comment">
+                        commentsSection.append(`<div class="comments">
                             <img src="${comment.user.images}" alt="User Avatar">
                             <div>
                                 <h6 style="font-size:10px;">${comment.user.firstname} ${comment.user.lastname}</h6>
-                                <div class="comment-content" style="font-size:10px;">
+                                <div class="comments-content" style="font-size:10px;">
                                     <p>${comment.content}</p>
                                 </div>
-                                <div class="comment-meta">
+                                <div class="comments-meta">
 
 
                                 </div>
@@ -413,8 +409,9 @@
 
   }
   $(".comment").click(function(){
+        let post_id=$(this).data('feed');
       $("#modal__comments").modal("show");
-      //displayComments();
+      displayComments(post_id);
   });
   $(".close").click(function(){
       $("#modal__comments").modal("hide").find('form').trigger('reset');
@@ -431,29 +428,35 @@
 });
 
 
-    $('.btnn').on('click',function(e){
-      e.preventDefault();
-      //var post_id=$(".Submmit").data("post");
-      var formData = $('#comment_form').serialize();
+$(document).ready(function() {
+    $('.btnn').on('click', function(e) {
+        e.preventDefault();
 
-      //alert(formData);
-      $.ajax({
-          type:"POST",
-          headers: {
-                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-              },
-          url:"{{ route('comment.store') }}",
-          data:formData,
-          success:function(response){
-              $('#comment_form')[0].reset();
-              displayComments();
-              //console.log(response);
-          }
-      });
+        let postId = $('.postId').val();
+        let content =$('#content_' + postId).val();
 
+        if (content.trim() === '') {
+            alert('Comentário não pode estar vazio.');
+            return;
+        }
 
-
+        $.ajax({
+            type: "POST",
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: "{{ route('comment.store') }}",
+            data: { 'post_id': postId, 'content': content },
+            success: function(response) {
+                $('#comment_form_' + postId)[0].reset(); // Reset form
+                displayComments(postId); // Update comments section
+            },
+            error: function(xhr) {
+                alert('Error submitting comment: ' + xhr.responseText);
+            }
+        });
     });
+});
     //displayComments();
 
 
@@ -530,7 +533,6 @@
         clearInterval(timer);
         timeSpent = 0;
     });
-//});
 
 
 

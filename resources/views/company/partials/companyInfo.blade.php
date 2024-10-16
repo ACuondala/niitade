@@ -101,7 +101,7 @@
         </li>
         <li>
             <span>Nº de Views no Perfil Empresa:</span>
-            <strong>45</strong>
+            <strong>{{ $companyProfileViewCount }}</strong>
         </li>
         </ul>
     </div>

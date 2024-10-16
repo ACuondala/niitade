@@ -16,42 +16,29 @@
             @foreach ($favorites as $favorite)
                 <div class="item__favorito bg-white">
                     <div class="bg__produto">
-                    <img src="" alt="" />
+                        @foreach ($favorite->contents->take(1) as  $content)
+                            <img src="{{ asset($content->files) }}" alt="Foto Postada" class="pictures d-block w-100" />
+                        @endforeach
                     </div>
                     <div class="content__favorito">
-                    <a href="product-detalhe.html">
-                        <h4>Tecno Spark</h4>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                        Optio voluptatum sunt cum dolorum autem aspernatur
+                    @if($favorite->product_id != null)
+                        <a href="{{ route('product.detail',$favorite->product_id) }}">
+                    @else
+                        <a href="{{ route('companies.profile',$favorite->company->companyName) }}">
+                    @endif
+                        <h4>{{ $favorite->titlePost }}</h4>
+                        <p style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">{{ $favorite->description }}</p>
                     </a>
                     <div class="content__price__produto">
-                        <span>Nome Empresa</span>
-                        <span>300 AO</span>
+                        <span>{{ $favorite->company->companyName }}</span>
+
                     </div>
-                    <button>Deixar de Ser Favorito</button>
+                    <button class="unfavor" data-id="{{ $favorite->id }}">Deixar de Ser Favorito</button>
                     </div>
                 </div>
 
             @endforeach
-            {{--
-                <div class="item__favorito bg-white">
-                    <div class="bg__produto">
-                    <img src="../assets/img/product/product-4.jpg" alt="" />
-                    </div>
-                    <div class="content__favorito">
-                    <a href="product-detalhe.html">
-                        <h4>Tecno Spark</h4>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                        Optio voluptatum sunt cum dolorum autem aspernatur
-                    </a>
-                    <div class="content__price__produto">
-                        <span>Nome Empresa</span>
-                        <span>300 AO</span>
-                    </div>
-                    <button>Deixar de Ser Favorito</button>
-                    </div>
-                </div>
-           --}}
+
         </div>
         <!-- Apresentação do Perfil da Empresa e do Usuário -->
       </div>
@@ -60,5 +47,21 @@
 
 @endsection
 @section('script')
+    <script>
+    $(".unfavor").click(function(){
+        let post_id=$(this).data('id');
+        alert(post_id);
+        $.ajax({
+            url:"{{ route('unfavor') }}",
+            type:'post',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            data:{'post_id':post_id},
+            success:function(response){
 
+            }
+        });
+    });
+    </script>
 @endsection

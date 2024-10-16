@@ -19,6 +19,7 @@ return new class extends Migration
             $table->String('titlePost');
             $table->longText('description')->nullable();
             $table->integer("view_count")->default(0);
+            $table->integer('cost')->defult(0);
             $table->foreignId('product_id')->constrained()->nullable();
             $table->foreignId('company_id')->constrained();
             $table->foreignId('post_link_id')->constrained();

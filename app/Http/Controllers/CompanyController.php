@@ -33,4 +33,7 @@ class CompanyController extends Controller
         return $this->CService->seeProfile($name);
     }
     public function liked(Request $request){return $this->EService->liked($request);}
+
+
+    public function viewCount(Request $request){return $this->CService->countCompanyViewProfile($request);}
 }

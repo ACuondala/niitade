@@ -383,3 +383,194 @@ h6 {
     transform: rotate(360deg);
   }
 }
+
+/* RELATÓRIO POSTS */
+.header-painel-anuncios {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+
+  background: #fff;
+  padding-block: 1rem;
+  padding-inline: 1rem;
+
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+}
+.header-painel-anuncios .title {
+  display: flex;
+  height: 100%;
+}
+
+.header-painel-anuncios .title h3 {
+  font-size: 1rem;
+  padding-top: 0.8rem;
+}
+
+.header-painel-anuncios .buttons {
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.header-painel-anuncios button {
+  padding: 0.3rem;
+  width: 24%;
+  background: #fff;
+  border: 1px solid #ccc;
+}
+
+.painels {
+  background: #fff;
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  margin-block: 0.5rem;
+  padding-inline: 1rem;
+  padding-block: 0.5rem;
+
+  gap: 0.5rem;
+}
+
+.painels .painel {
+  display: flex;
+  justify-content: space-between;
+}
+
+.painels .painel.activo .painel-content button:first-child {
+  background: var(--bg-primary) !important;
+  border-color: #000;
+}
+
+.painels .painel .painel-content {
+}
+
+.painels .painel .painel-content label {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.painels .painel .painel-content label.activo {
+  background: rgb(4, 128, 57);
+}
+
+.painels .painel .painel-content label.vencido {
+  background: red;
+}
+
+.painels .painel .painel-content button:first-child {
+  background: #fff;
+  font-size: 0.895rem;
+  border: 1px solid #ccc;
+  padding-block: 0.5rem;
+}
+.painels .painel .painel-content button:last-child {
+  background: none;
+  border: 0;
+}
+
+.painels .painel button {
+  background: none;
+  border: 0;
+}
+
+.resultados-companha {
+}
+
+.resultados-companha .title-content {
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+}
+
+.resultados-companha .title-content h3 {
+  font-size: 1.1rem;
+}
+
+.resultados-companha table {
+  width: 100%;
+  margin-top: 1rem;
+
+  background: white;
+  /* border-radius: 0.3rem; */
+  /* box-shadow: 0 10px 16px 0 rgb(0 50 90 / 8%); */
+
+  border-collapse: collapse;
+}
+
+/* .table__recibo {
+  margin-top: 2rem;
+  padding-block: 2rem;
+  background: white;
+  border-radius: 0.3rem;
+  box-shadow: 0 10px 16px 0 rgb(0 50 90 / 8%);
+} */
+
+/* .table__recibo span {
+  font-weight: 500;
+  text-transform: uppercase;
+} */
+
+.resultados-companha table {
+  width: 100%;
+  margin-top: 1rem;
+  border-collapse: collapse;
+}
+
+.resultados-companha table tr th {
+  text-align: left;
+  font-weight: 400;
+  padding-block: 1rem;
+}
+
+.resultados-companha span,
+.resultados-companha table th,
+.resultados-companha table td {
+  padding-inline: 2rem;
+}
+
+.resultados-companha table tbody tr {
+  margin-top: 2rem;
+  height: 55px;
+  /* background: #88182933; */
+  border-bottom: 1px solid #e4ebee;
+  cursor: pointer;
+  transition: 0.3s all ease-in-out;
+}
+
+.resultados-companha table tbody tr:hover {
+  background: #f1f1f1;
+}
+
+.resultados-companha table tbody tr button {
+  background: #fafafa;
+  border: 0;
+}
+
+@media (max-width: 996px) {
+  .header-painel-anuncios {
+    flex-direction: column;
+  }
+
+  .header-painel-anuncios .buttons {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .header-painel-anuncios .buttons button {
+    width: 50%;
+  }
+}

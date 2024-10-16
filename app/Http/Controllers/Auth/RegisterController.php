@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterRequest;
-use App\Services\Auth\RegisterService;
+use App\services\Auth\RegisterService;
 use Illuminate\Http\Request;
 
 class RegisterController extends Controller

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Auth;
+namespace App\services\Auth;
 
 use App\Http\Requests\RegisterRequest;
 use App\Models\Country;

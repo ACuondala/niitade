@@ -1,9 +1,13 @@
 <?php
-Namespace App\Services;
+Namespace App\services;
 
 use App\Models\Company;
+use App\Models\ExpecificPublic;
+use App\Models\Plan;
 use App\Models\Post;
 use App\Models\Postview;
+use App\Models\Sponsor;
+use App\Models\User;
 use App\traits\UploadFiles;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -24,37 +28,50 @@ class PostService{
 
     public function createPost(Request $request){
         $activeCompanis=Company::where('status','active')->where('user_id',Auth::user()->id)->first();
+        $user=Auth::user();
 
-        DB::beginTransaction();
+        if($request->cost <= Auth::user()->money){
+            DB::beginTransaction();
 
+            $desconto=$user->money - $request->cost;
 
-        $posts=Post::create([
-            'namePost'=>$request->name,
-            'titlePost'=>$request->title,
-            'category_id'=>$request->category_id,
-            'description'=>$request->description,
-            'product_id'=>$request->product_id,
-            'company_id'=>$activeCompanis->id,
-            'post_link_id'=>$request->postLink,
-            'plan_id'=>$request->plan_id,
-            'sponsor_id'=>$request->sponsor_id,
-            'expecific_public_id'=>$request->expecific
-        ]);
+            //dd($desconto);
 
-        if(isset($request->images)){
+            $posts=Post::create([
+                'namePost'=>$request->name,
+                'titlePost'=>$request->title,
+                'category_id'=>$request->category_id,
+                'description'=>$request->description,
+                'product_id'=>$request->product_id,
+                'company_id'=>$activeCompanis->id,
+                'post_link_id'=>$request->postLink,
+                'plan_id'=>$request->plan_id ?? null,
+                'cost'=>$request->cost,
+                'sponsor_id'=>$request->sponsor_id ?? null,
+                'expecific_public_id'=>$request->expecific ?? null
+            ]);
+            //if($desconto != 0){
+                $user->update(['money' => $desconto]);
 
-            $contents = $request->images;
-            foreach ($contents as $content) {
-                $contentStorage=$this->uploadFile($request,$content, 'nitade/post/content/' );
-                $posts->contents()->create([
-                    "files"=>$contentStorage,
-                    "post_id"=>$posts->id
-                ]);
+            //}
+            if(isset($request->images)){
 
+                $contents = $request->images;
+                foreach ($contents as $content) {
+                    $contentStorage=$this->uploadFile($request,$content, 'nitade/post/content/' );
+                    $posts->contents()->create([
+                        "files"=>$contentStorage,
+                        "post_id"=>$posts->id
+                    ]);
+
+                }
             }
+
+            DB::commit();
+            return $posts;
+        }else{
+            return redirect()->back();
         }
-        DB::commit();
-        return $posts;
     }
 
     public function postViewCount(Request $request){

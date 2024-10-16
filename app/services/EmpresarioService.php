@@ -45,6 +45,8 @@ class EmpresarioService{
 
         })->count();
 
+        $companyProfileViewCount=Company::with('visitor')->where('id',$activeCompanis->id)->count();
+
         //dd($like_total);
         return view('company.index',[
             'activeCompany'=>Company::with('user')->where('status','active')->where('user_id',Auth::user()->id)->first(),
@@ -60,6 +62,7 @@ class EmpresarioService{
             'comments'=>Comment::get(),
             'plans'=>Plan::get(),
             'follow_count'=>$follow_count,
+            'companyProfileViewCount'=>$companyProfileViewCount,
             'sponsors'=>Sponsor::get(),
             'expecifics_public'=>ExpecificPublic::get(),
             'interest'=>Interest::get(),

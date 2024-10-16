@@ -14,7 +14,8 @@ use App\traits\UploadFiles;
 use App\Models\DeliveryMode;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class CompanyService{
 
@@ -115,7 +116,7 @@ class CompanyService{
 
         })->where('users.id',Auth::user()->id)->first();
 
-
+        
         return view('company.profile.profile',[
             'companies'=>$companies,
             'kindProducts'=>KindProduct::get(),
@@ -124,6 +125,20 @@ class CompanyService{
             'products'=>Products::with('company')->where('company_id',$companies->id)->get(),
             'follow_count'=>$follow_count,
             'follow_buttom'=>$follow_buttom,
+        ]);
+    }
+
+    public function countCompanyViewProfile(Request $request){
+
+        $company=Company::find($request->company);
+        
+        if($company->user_id == $request->profile){
+            $company->visitor()->sync($request->profile);
+           
+        }
+        return response()->json([
+            'status'=>Response::HTTP_OK,
+            'message'=>'view'
         ]);
     }
 

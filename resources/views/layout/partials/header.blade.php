@@ -23,9 +23,9 @@
             </div>
             <div class="item__header__info">
                 @auth
-                    <a href="">
+                    <a>
                         <i class="uil uil-eye"></i>
-                        Saldo: {{ number_format(Auth::user()->money, 2,',','.') }}</a>
+                        Saldo: {{ number_format(Auth::user()->money, 2,',','.') }}kz</a>
                     <button>Depositar</button>
                 @endauth
 
@@ -96,7 +96,7 @@
                     @auth
                         <a href="#">
                             <span>
-                                <img src="{{ Auth::user()->images }}" class="avatar" />
+                                <img src="{{asset(Auth::user()->images)}}" class="avatar" />
                                 {{ Auth::user()->firstname }} {{ Auth::user()->lastname }}
                             </span>
                             <i class="bi bi-chevron-down"></i>
@@ -116,7 +116,7 @@
                                 </li>
 
                                 <li><a href="pages/compras.html">Minhas Compras</a></li>
-                                <li><a href="pages/favoritos.html">Favoritos</a></li>
+                                <li><a href="{{ route('favorite.index') }}">Favoritos</a></li>
                                 <li> <a href="#" class="sair">Terminar Sessão</a></li>
 
 

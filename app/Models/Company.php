@@ -67,6 +67,8 @@ class Company extends Model
     {
         return $this->belongsToMany(Follower::class,'followers','company_id','user_id',);
     }
+
+    public function visitor(){return $this->belongsToMany(User::class, 'company_user');}
 }
 
 

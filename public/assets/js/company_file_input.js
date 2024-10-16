@@ -153,7 +153,7 @@ $(".link").on('change', function() {
 $(".choose").hide("slow");
 $(".public").on('change', function() {
     var public = $(this).val();
-    if (public == "5000") {
+    if (public == 1) {
         $(".choose").show("slow");
 
 

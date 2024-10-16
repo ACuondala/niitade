@@ -25,7 +25,7 @@
           </div>
           <div class="modal-body">
                 <div class="corpo">
-                    <form action="{{ route('post.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{route('post.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         {{-- Image of post --}}
                         <div class="row justify-content-center">
@@ -33,9 +33,9 @@
 
                             <div class="form-group col-lg-4 align-self-center">
                                 <div class="avatar__photo">
-                                    <label class="avatar__perfil picture" tabindex="0">
-                                        <input type="file" multiple name="images[]" accept="jpeg,png,mp4,mkv,jpg" id="picture__input" />
-                                        <span class="picture__image"></span>
+                                    <label class="avatar__perfil feedss" tabindex="0">
+                                        <input type="file" multiple name="images[]" accept="jpeg,png,mp4,mkv,jpg" id="feedss__input" />
+                                        <span class="feedss__image"></span>
                                     </label>
                                 </div>
                             </div>
@@ -78,7 +78,7 @@
                                 <select name="plan_id" class="form-control-lg plan" id="">
                                 <option value="">Selecione Plano</option>
                                 @foreach ($plans as $plan)
-                                    <option value="{{ $plan->price }}" data-pricePlan="{{ $plan->price }}">{{ $plan->plan }}</option>
+                                    <option value="{{ $plan->id }}" data-plan="{{ $plan->price }}">{{ $plan->plan }}</option>
                                 @endforeach
 
 
@@ -91,7 +91,7 @@
                                 <select name="sponsor_id" class="form-control-lg sponsor" id="">
                                 <option value="">Patrocinar Top 5</option>
                                     @foreach ($sponsors as $sponsor)
-                                    <option value="{{ $sponsor->price }}" data-priceSponsor="{{ $sponsor->price }}"> {{ $sponsor->sponsor }} </option>
+                                    <option value="{{ $sponsor->id }}" data-sponsor="{{ $sponsor->price }}"> {{ $sponsor->sponsor }} </option>
                                     @endforeach
 
 
@@ -105,7 +105,7 @@
                                 <select name="expecific" class="form-control-lg public" id="">
                                     <option value="">Público Especifico</option>
                                     @foreach ($expecifics_public as $public)
-                                        <option value="{{ $public->price }}">1 Semana</option>
+                                        <option value="{{ $public->id }}" data-public="{{ $public->price }}">1 Semana</option>
                                     @endforeach
 
                                 </select>
@@ -121,7 +121,7 @@
                             </div>
 
                             <div class="form-group inputBox col-lg-4 mt-4">
-                                <select class="form-control-lg inputBox" name="interest[]">
+                                <select class="form-control-lg inputBox choose" name="interest[]">
                                     <option value="">Selecione O Interesse</option>
                                     @foreach ($interest as $data)
                                     <option class="itemInteres" value="{{ $data->id }}">{{ $data->interest }}</option>
@@ -134,12 +134,17 @@
 
                         <div class="row">
                             <div class="form-group inputBox col-lg-4 mt-4">
-                                <select class="form-control-lg inputBox" name="interest[]">
+                                <select class="form-control-lg inputBox choose" name="interest[]">
                                     <option value="">Selecione O Município</option>
                                     @foreach ($municipes as $municipe)
                                     <option class="" value="{{ $data->id }}">{{ $municipe->municipe }}</option>
                                     @endforeach
                                 </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group inputBox col-lg-12 mt-4">
+                                <textarea class="form-control" name="description" placeholder="O que estás a pensar?" id="" cols="10" rows="5"></textarea>
                             </div>
                         </div>
 
@@ -148,7 +153,7 @@
                               <div class="bg__feed">
                                 <p class="mt-2">
                                   Chegando o valor final de acordo a publicação :
-                                  <strong class="soma">0</strong>
+                                  <input type="number" class="soma" id="cost" name="cost" value="">
                                 </p>
                               </div>
                             </div>
@@ -159,7 +164,7 @@
                               <input
                                 type="submit"
                                 value="Publicar"
-                                class="form-control-lg"
+                                class="form-control-lg pub"
                               />
                             </div>
                         </div>

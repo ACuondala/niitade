@@ -31,6 +31,7 @@ class User extends Authenticatable
         'otherphone',
         'terms',
         'images',
+        'money',
         'neighbor_id'
     ];
 

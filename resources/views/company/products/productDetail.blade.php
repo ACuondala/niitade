@@ -13,7 +13,7 @@
             <div class="context__product">
               <h5>{{ $productDetail->name }}</h5>
               <a href='/company/{{ $productDetail->company->companyName }}'>{{  $productDetail->company->companyName }}</a>
-              <p>
+              <p style="text-align: justify;">
                 {{ $productDetail->description }}
               </p>
               <div class="stars">

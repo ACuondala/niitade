@@ -13,6 +13,7 @@ use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ProfileUserController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\ReportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,6 +73,8 @@ Route::controller(ProfileUserController::class)->group(function(){
     Route::put('/profile', 'update')->name('profile.update');
 
 
+
+
 });
 
 Route::controller(CompanyController::class)->group(function(){
@@ -79,6 +82,8 @@ Route::controller(CompanyController::class)->group(function(){
     Route::get('/changeCompany', 'changeCompany')->name('companies.change');
     Route::get('/company/{name}', 'profile')->name('companies.profile');
     Route::get('/liked', 'liked')->name("liked");
+
+    Route::post('/countVisitor', 'viewCount')->name('companyprofile.viewcount');
 });
 Route::controller(DeliveryController::class)->group(function () {
     Route::post('/delivery', 'store')->name('delivery.store');
@@ -117,9 +122,15 @@ Route::controller(CommentController::class)->group(function(){
 Route::controller(FavoriteController::class)->group(function(){
     Route::get('/favorite', 'index')->name('favorite.index');
     Route::post('/favorite', 'store')->name('favorite.store');
+    Route::post('/unfavor','unfavor')->name('unfavor');
 
 });
 Route::controller(FollowController::class)->group(function(){
     Route::get('/follow', 'store')->name('follow.store');
     Route::get('/unfollow', 'destroy')->name('follow.destroy');
+});
+
+Route::controller(ReportController::class)->group(function(){
+    Route::get('/report', 'index')->name('report.index');
+    Route::get('/top5', 'top5')->name('report.top');
 });
