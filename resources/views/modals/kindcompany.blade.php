@@ -13,7 +13,7 @@
                 </div>
                 <div class="modal-body">
                         @auth
-                            @if(!Auth::user()->company->count()==2)
+                            @if(Auth::user()->company->count()!=2)
                                 <div class="botaoApresentadoTipoEmpresas ModaltipoEmpresa">
                                     <button data-toggle="modal" data-target="#modal__registro__empresa">
                                         <img src="" alt="" />

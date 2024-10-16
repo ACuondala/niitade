@@ -35,7 +35,7 @@
             data-target="#modal__postagem__perfil"
           >
             <img src="" alt="" />
-            <span>Perfil</span>
+            <span>Galeria de Novidades</span>
           </button>
         </div>
       </div>

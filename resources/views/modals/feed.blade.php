@@ -153,7 +153,7 @@
                               <div class="bg__feed">
                                 <p class="mt-2">
                                   Chegando o valor final de acordo a publicação :
-                                  <input type="number" class="soma" id="cost" name="cost" value="">
+                                  <input type="number" class="soma" id="cost" name="cost" value="" readonly>
                                 </p>
                               </div>
                             </div>

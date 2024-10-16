@@ -8,6 +8,7 @@ use App\Models\Neighbor;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -85,5 +86,10 @@ class User extends Authenticatable
     public function interestUser(){
         $interest=InterestUser::where('user_id',$this->id)->count();
         return $interest;
+    }
+
+    public function mobileCompanies(){
+        $mobileCompany= Company::where('user_id',Auth::user()->id)->get();
+        return $mobileCompany;
     }
 }

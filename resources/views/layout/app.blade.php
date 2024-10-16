@@ -92,6 +92,7 @@
           <div class="modal-body">
             <div class="modal__plus">
               <ul>
+
                 <li>
                   <a
                     href="#"
@@ -113,12 +114,18 @@
                     Minhas Empresas <i class="uil uil-angle-down"></i>
                     <div class="dropdown-content__nitadi">
                       <ul>
-                        <li>
-                          <a href="#"> Só Carros </a>
-                        </li>
-                        <li>
-                          <a href=""> CineMax </a>
-                        </li>
+
+                         @foreach (Auth::user()->mobileCompanies() as $company)
+                            <li>
+                                @if ($company->status == "active")
+                                <a href="{{ route('companies.profile', $company->companyName) }}" class="actives" data-active="{{ $company->id }}">{{ $company->companyName }} </a>
+                                @else
+                                <a href="#" style="font-size: 15px;color:grey;" class="inactives" data-inactive="{{ $company->id }}"> {{ $company->companyName }} </a>
+                                @endif
+                            </li>
+                        @endforeach
+
+
                       </ul>
                     </div>
                   </button>
@@ -171,7 +178,7 @@
                 data-target="#modal__postagem__perfil"
               >
                 <img src="" alt="" />
-                <span>Perfil</span>
+                <span>Galeria de Novidades</span>
               </button>
             </div>
           </div>
