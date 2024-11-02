@@ -45,7 +45,7 @@
                          {{-- End image of post --}}
                         <div class="row">
                             <div class="form-group inputBox col-lg-4 mt-4">
-                                <select name="postLink" class="form-control-lg link" id="">
+                                <select name="postLink" class="form-control-lg link" id="" required>
                                     <option value="">Selecione Link</option>
                                     @foreach ($postLink as $link)
                                     <option value="{{ $link->id }}">{{ $link->link }}</option>
@@ -88,7 +88,7 @@
 
 
                             <div class="form-group inputBox col-lg-4 mt-4">
-                                <select name="sponsor_id" class="form-control-lg sponsor" id="">
+                                <select name="sponsor_id" class="form-control-lg sponsor" id="" required>
                                 <option value="">Patrocinar Top 5</option>
                                     @foreach ($sponsors as $sponsor)
                                     <option value="{{ $sponsor->id }}" data-sponsor="{{ $sponsor->price }}"> {{ $sponsor->sponsor }} </option>
@@ -102,7 +102,7 @@
 
                         <div class="row">
                             <div class="form-group inputBox col-lg-4 mt-4">
-                                <select name="expecific" class="form-control-lg public" id="">
+                                <select name="expecific" class="form-control-lg public" id="" required>
                                     <option value="">Público Especifico</option>
                                     @foreach ($expecifics_public as $public)
                                         <option value="{{ $public->id }}" data-public="{{ $public->price }}">1 Semana</option>
@@ -112,7 +112,7 @@
                             </div>
 
                             <div class="form-group inputBox col-lg-4 mt-4">
-                                <select name="product_id" class="form-control-lg products" id="">
+                                <select name="product_id" class="form-control-lg products" id="" required>
                                     <option value="">Selecione O Produto</option>
                                     @foreach ($products as $product)
                                         <option value="{{ $product->id }}">{{ $product->name }}</option>
@@ -121,7 +121,7 @@
                             </div>
 
                             <div class="form-group inputBox col-lg-4 mt-4">
-                                <select class="form-control-lg inputBox choose" name="interest[]">
+                                <select class="form-control-lg inputBox choose" name="interest[]" required>
                                     <option value="">Selecione O Interesse</option>
                                     @foreach ($interest as $data)
                                     <option class="itemInteres" value="{{ $data->id }}">{{ $data->interest }}</option>
@@ -134,7 +134,7 @@
 
                         <div class="row">
                             <div class="form-group inputBox col-lg-4 mt-4">
-                                <select class="form-control-lg inputBox choose" name="interest[]">
+                                <select class="form-control-lg inputBox choose" name="interest[]" required>
                                     <option value="">Selecione O Município</option>
                                     @foreach ($municipes as $municipe)
                                     <option class="" value="{{ $data->id }}">{{ $municipe->municipe }}</option>

@@ -23,4 +23,13 @@ class FavoriteController extends Controller
     public function store(Request $request){
         return $this->service->save($request);
     }
+
+    public function unfavors(Request $request){
+        return $this->service->delete($request);
+
+    }
+
+    public function showAllfavorites(){
+        return $this->service->showAll();
+    }
 }

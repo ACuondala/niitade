@@ -10,18 +10,13 @@ use Symfony\Component\HttpFoundation\Response;
 class FavoritesServices{
 
     public function getAll(){
-        //$favorites=Favorite::with('post')->where('user_id',Auth::user()->id)->latest()->get();
+
         $favorites=Post::whereIn('id',function($query) {
             $query->select('favorites.user_id');
             $query->where('user_id',Auth::user()->id);
             $query->from('favorites');
         })->latest()->get();
-        /*return response()->json([
-            'status'=>Response::HTTP_OK,
-            'message'=>"Favorites listed successfully",
-            'favorites'=>$favorites
-        ]);*/
-        //dd($favorites);
+
         return view('favourites.favourites',['favorites'=>$favorites]);
     }
 
@@ -45,8 +40,27 @@ class FavoritesServices{
         }
     }
 
-    public function delete( $request){
-        
+    public function delete($request){
+
+        $favorites=Favorite::where(['post_id'=>$request->post_id, 'user_id'=>Auth::user()->id])->first();
+        if($favorites){
+            $favorites->delete();
+            return response()->json(['message'=>'O post está fora dos favoritos'],204);
+        }
+    }
+
+    public function showAll(){
+        $favorites=Post::with(['company','contents'])->whereIn('id',function($query) {
+            $query->select('favorites.user_id');
+            $query->where('user_id',Auth::user()->id);
+            $query->from('favorites');
+        })->latest()->get();
+        return response()->json([
+            'status'=>Response::HTTP_OK,
+            'message'=>"Favorites listed successfully",
+            'favorites'=>$favorites
+        ]);
+
     }
 
 

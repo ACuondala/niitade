@@ -73,7 +73,7 @@
         </ul>
 
         <div class="money-and-geo">
-        <button>Saldo: 5.000 AOA</button>
+        <button>Saldo: {{ number_format(Auth::user()->money, 2,',','.') }}AOA</button>
         <a href="#">
             <i class="uil uil-location-point"></i>
         </a>

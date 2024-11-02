@@ -13,6 +13,7 @@ use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ProfileUserController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\NotificationsController;
 use App\Http\Controllers\ReportController;
 
 /*
@@ -122,7 +123,8 @@ Route::controller(CommentController::class)->group(function(){
 Route::controller(FavoriteController::class)->group(function(){
     Route::get('/favorite', 'index')->name('favorite.index');
     Route::post('/favorite', 'store')->name('favorite.store');
-    Route::post('/unfavor','unfavor')->name('unfavor');
+    Route::post('/unfavor','unfavors')->name('unfavor');
+    Route::get('/showAll', 'showAllfavorites')->name('favorite.showAll');
 
 });
 Route::controller(FollowController::class)->group(function(){
@@ -133,4 +135,8 @@ Route::controller(FollowController::class)->group(function(){
 Route::controller(ReportController::class)->group(function(){
     Route::get('/report', 'index')->name('report.index');
     Route::get('/top5', 'top5')->name('report.top');
+});
+
+Route::controller(NotificationsController::class)->group(function(){
+    Route::get('/notifications','index')->name('notifications.index');
 });

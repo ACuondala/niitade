@@ -432,13 +432,14 @@ $(document).ready(function() {
     $('.btnn').on('click', function(e) {
         e.preventDefault();
 
-        let postId = $('.postId').val();
+        let postId = $(this).data('postid');
         let content =$('#content_' + postId).val();
 
-        if (content.trim() === '') {
+        //console.log(content);
+        /*if (content.trim() === '') {
             alert('Comentário não pode estar vazio.');
             return;
-        }
+        }*/
 
         $.ajax({
             type: "POST",

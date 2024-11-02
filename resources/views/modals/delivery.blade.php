@@ -43,7 +43,7 @@
                                 <span>Sobrenome</span>
                             </div>
                             <div class="form-group inputBox col-lg-4 mt-4">
-                                <select name="" class="form-control-lg province" >
+                                <select name="" class="form-control-lg province" required>
                                     <option value="">Selecione Província</option>
                                     @foreach ($provinces as $province)
                                         <option value="{{ $province->id }}">{{ $province->province }}</option>
@@ -82,7 +82,7 @@
                                 <hr />
                             </div>
                             <div class="form-group inputBox col-lg-4 mt-4">
-                                <select name="kindVehicle_id" class="form-control-lg kindVehicle" >
+                                <select name="kindVehicle_id" class="form-control-lg kindVehicle" required>
                                     <option value="">Tipologia Veículo</option>
 
                                     @foreach ($kindVehicle as $kind)

@@ -34,6 +34,19 @@
                                 </div>
                             @endif
                         @endauth
+                        @guest
+                        <div class="botaoApresentadoTipoEmpresas ModaltipoEmpresa">
+                            <button>
+                                <img src="" alt="" />
+                                <span>Empresa</span>
+                            </button>
+
+                            <button>
+                                <img src="" alt="" />
+                                <span>Entregador(a)</span>
+                            </button>
+                        </div>
+                        @endguest
 
                 </div>
             </div>

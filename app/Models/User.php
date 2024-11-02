@@ -92,4 +92,7 @@ class User extends Authenticatable
         $mobileCompany= Company::where('user_id',Auth::user()->id)->get();
         return $mobileCompany;
     }
+    public function activeCompany(){
+        
+    }
 }

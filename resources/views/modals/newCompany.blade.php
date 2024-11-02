@@ -35,7 +35,7 @@
                          </div>
                          <div class="row justify-content-center">
                              <div class="form-group inputBox col-lg-4 mt-4">
-                                 <select name="tipo_empresa_id" class="form-control-lg" id="naturezaNegocio">
+                                 <select name="tipo_empresa_id" class="form-control-lg" id="naturezaNegocio" required>
                                      <option value="">Natureza do Negócio</option>
                                      @foreach ($kind_companies as $kind)
                                          <option value="{{ $kind->id }}">{{ $kind->kind }}</option>
@@ -66,7 +66,7 @@
                             </div> --}}
 
                              <div class="form-group inputBox col-lg-4 mt-4">
-                                 <select name="categoria_id" class="form-control-lg" id="">
+                                 <select name="categoria_id" class="form-control-lg" id="" required>
                                      <option value="">Selecione Categoria</option>
                                      @foreach ($categories as $category)
                                          <option value="{{ $category->id }}">{{ $category->category }}</option>
@@ -79,7 +79,7 @@
                          <div class="row">
 
                              <div class="form-group inputBox col-lg-4 mt-4">
-                                 <select name="" class="form-control-lg province" id="provincia">
+                                 <select name="" class="form-control-lg province" id="provincia" required>
                                      <option value="">Selecione Província</option>
                                      @foreach ($provinces as $province)
                                          <option value="{{ $province->id }}">{{ $province->province }}</option>
@@ -94,7 +94,7 @@
                              </div>
 
 
-                             <div class="form-group inputBox col-lg-4 mt-4">
+                             <div class="form-group inputBox col-lg-4 mt-4" required>
                                  <select name="bairro_id" class="form-control-lg neighbor" id="bairro">
                                      <option value="">Selecione Bairro</option>
 

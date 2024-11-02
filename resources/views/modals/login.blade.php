@@ -6,8 +6,13 @@ aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <p class="modal-title" id="staticBackdropLabel">
                 Login
             </p>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            >
+
             </button>
         </div>
         <div class="modal-body">

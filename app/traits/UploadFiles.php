@@ -4,7 +4,7 @@
 namespace App\traits;
 
 use Illuminate\Http\Request;
- 
+
 trait UploadFiles{
 
 

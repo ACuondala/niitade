@@ -60,7 +60,7 @@
                 </li>
                 @if (Auth::check())
                     <li>
-                        <a class="nav-link scrollto content__icone very" href="{{-- route('notification.index') --}}">
+                        <a class="nav-link scrollto content__icone very" href="{{route('notifications.index') }}">
                             <i class="uil uil-bell"></i>
                             <span>Notificações</span>
                         </a>
