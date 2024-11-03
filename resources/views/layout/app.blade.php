@@ -322,7 +322,7 @@
                 </li>
             @else
                 <li>
-                    <a href="pages/perfil.html">
+                    <a href="#" class="very">
                     <i class="uil uil-user"></i>
                     </a>
                 </li>
