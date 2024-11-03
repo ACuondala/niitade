@@ -48,10 +48,8 @@
     <link href="{{ asset('../assets/css/partials/detalheProduto.css') }}" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('assets/css/partials/home.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/partials/inputBox.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/partials/notification.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/splide.min.css') }}" />
-    <link href="{{ asset('assets/css/partials/favoritos.css') }}" rel="stylesheet" />
-
+    <link href="../assets/css/partials/favoritos.css" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('fontawesome-5/css/all.css') }}">
 
 
@@ -201,6 +199,7 @@
         <main class="main__section " >
     @endguest
         @yield('content')
+
     </main>
     <!-- Trabalhando na parte principal do Projeto -->
 
@@ -250,7 +249,7 @@
             @endguest
             @Auth
                 <li>
-                    <a href="#">Minha Compras</a>
+                    <a href="pages/favoritos.html">Minha Compras</a>
                 </li>
 
                 <li>
@@ -284,11 +283,21 @@
                     </a>
                 </li>
             @endif
+            @auth
             <li>
               <a href="#" data-toggle="modal" data-target="#pesquisa">
                 <i class="uil uil-search"></i>
               </a>
             </li>
+            @endauth
+            @guest
+            <li>
+              <a href="#" class="very" data-toggle="modal" data-target="#">
+                <i class="uil uil-search"></i>
+              </a>
+            </li>
+            @endguest
+
             <li>
               <a
                 href="#"
@@ -298,21 +307,11 @@
                 <i class="uil uil-plus"></i>
               </a>
             </li>
-            @auth
             <li>
-                <a href="{{ route('notifications.index') }}">
-                  <i class="uil uil-bell"></i>
-                </a>
-              </li>
-            @endauth
-            @guest
-
-            <li>
-              <a href="#" class="very">
+              <a href="pages/notificacao.html">
                 <i class="uil uil-bell"></i>
               </a>
             </li>
-            @endguest
             @if (Auth::check())
                 <li>
                     <a href="{{ route('profile.index') }}">
@@ -323,7 +322,7 @@
                 </li>
             @else
                 <li>
-                    <a href="#" class="very">
+                    <a href="pages/perfil.html">
                     <i class="uil uil-user"></i>
                     </a>
                 </li>
@@ -387,10 +386,12 @@
     <!-- Template Main JS File -->
     @include('modals.login')
     <script src="{{ asset('assets/js/jquery-3.2.1.min.js') }}"></script>
+
+    <script src="{{ asset('assets/js/jquery-3.2.1.min.js') }}"></script>
     <script src="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.jquery.min.js"></script>
 <link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('assets/js/bootstrap.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('assets/js/verify__auth.js') }}"></script>
     <script src="{{ asset('assets/js/avatar__file__input.js') }}"></script>
     <script src="{{ asset('assets/js/feed__file__input.js') }}"></script>
@@ -398,8 +399,7 @@
     <script src="{{ asset('assets/js/nitadi.js') }}"></script>
     <script src="{{ asset('assets/js/post__monety.js') }}"></script>
 
-
-     <script src="{{ asset('assets/js/main.js') }}"></script>
+    {{-- <script src="{{ asset('assets/js/main.js') }}"></script> --}}
     <script>
         $(".very").on("click",function(){
             @if(Auth::check())
