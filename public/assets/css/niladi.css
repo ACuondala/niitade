@@ -526,26 +526,55 @@
 
   }
 
+
+
   /*company Docs*/
-  .produtos {
-      width: 370px;
-      height: 70px;
-      background: #ddd;
+ .produtos {
+    width: 100%; /* Ajuste padrão para se adaptar ao contêiner */
+    max-width: 370px;
+    height: 70px;
+    background: #ddd;
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-      color: #aaa;
-      border: 1px dashed #aaa;
-      border-radius:5%;
-      cursor: pointer;
+    color: #aaa;
+    border: 1px dashed #aaa;
+    border-radius: 5%;
+    cursor: pointer;
 
-      text-align: center;
-      font-size: 0.9rem;
+    text-align: center;
+    font-size: 0.9rem;
 
-      transition: color 300ms ease-in-out, background 300ms ease-in-out;
+    transition: color 300ms ease-in-out, background 300ms ease-in-out;
+}
+
+/* Para telas pequenas (smartphones) */
+@media (max-width: 576px) {
+    .produtos {
+        max-width: 100%; /* Remove limite de largura para telas pequenas */
+        height: 60px;
+        font-size: 0.8rem;
     }
+}
+
+/* Para tablets (médio) */
+@media (max-width: 768px) {
+    .produtos {
+        max-width: 100%; /* Limite para caber no contêiner */
+        height: 65px;
+        font-size: 0.85rem;
+    }
+}
+
+/* Para telas grandes (desktops) */
+@media (min-width: 992px) {
+    .produtos {
+        max-width: 370px; /* Aplica largura fixa em telas grandes */
+    }
+}
+
 
   .otherFile:hover {
       color: #777;
@@ -1277,5 +1306,23 @@ ul.ks-cboxtags li input[type="checkbox"]:focus + label {
     font-size: 14px;
     color: #fff;
 
+}
+
+/* Limita a largura das imagens para que se adaptem ao tamanho da coluna */
+.logo__preview {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+}
+
+/* Ajuste opcional para centralizar o conteúdo */
+.avatar__perfil.produtos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border: 1px dashed #ccc;
+    min-height: 150px; /* Define um tamanho mínimo para as áreas de upload */
 }
 

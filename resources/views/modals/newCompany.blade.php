@@ -35,7 +35,7 @@
                          </div>
                          <div class="row justify-content-center">
                              <div class="form-group inputBox col-lg-4 mt-4">
-                                 <select name="tipo_empresa_id" class="form-control-lg" id="naturezaNegocio" required>
+                                 <select name="tipo_empresa_id" class="form-control-lg" value="{{ old('tipo_empresa_id') }}" id="naturezaNegocio" required>
                                      <option value="">Natureza do Negócio</option>
                                      @foreach ($kind_companies as $kind)
                                          <option value="{{ $kind->id }}">{{ $kind->kind }}</option>
@@ -47,7 +47,7 @@
 
                          <div class="row">
                              <div class="form-group inputBox col-lg-4 mt-4">
-                                 <input type="text" name="nome" class="form-control-lg" required />
+                                 <input type="text" name="nome" class="form-control-lg" value="{{ old('nome') }}" required />
                                  <span>Nome da Empresa</span>
                              </div>
                              <div class="form-group inputBox col-lg-4 mt-4">
@@ -66,7 +66,7 @@
                             </div> --}}
 
                              <div class="form-group inputBox col-lg-4 mt-4">
-                                 <select name="categoria_id" class="form-control-lg" id="" required>
+                                 <select name="categoria_id" class="form-control-lg" value="{{ old('categoria_id') }}" id="" required>
                                      <option value="">Selecione Categoria</option>
                                      @foreach ($categories as $category)
                                          <option value="{{ $category->id }}">{{ $category->category }}</option>
@@ -79,7 +79,7 @@
                          <div class="row">
 
                              <div class="form-group inputBox col-lg-4 mt-4">
-                                 <select name="" class="form-control-lg province" id="provincia" required>
+                                 <select name="" class="form-control-lg province" id="provincia"  required>
                                      <option value="">Selecione Província</option>
                                      @foreach ($provinces as $province)
                                          <option value="{{ $province->id }}">{{ $province->province }}</option>
@@ -131,14 +131,15 @@
                          <div class="row">
                              <div class="form-group col-lg-3 mt-4">
                                  <label class="avatar__perfil file" tabindex="0">
-                                     <input type="file" accept="application/pdf" class="file__input alvara" id="alvara_input" name="alvara" />
+                                     <input type="file" accept="application/pdf" class="file__input alvara @error('alvara') is-invalid @enderror" id="alvara_input" name="alvara" />
                                      <span class="alvara__image logo__preview " id="alvara_name"></span>
                                  </label>
+                                 @error('alvara') {{--  <div class="alert alert-danger">{{ $message }}</div>--}}@enderror
                              </div>
 
                              <div class="form-group col-lg-3 mt-4">
                                  <label class="avatar__perfil file" tabindex="0">
-                                     <input type="file" accept="application/pdf" class="file__input" id="diario_input" name="diario" />
+                                     <input type="file" accept="application/pdf" class="file__input @error('diario') is-invalid @enderror" id="diario_input" name="diario" />
                                      <span class="diario__image logo__preview " id="diario_name"></span>
                                  </label>
                              </div>
@@ -149,7 +150,7 @@
                              <!-- Adicionar documentação Tab -->
                              <div class="form-group col-lg-3 mt-4">
                                  <label class="avatar__perfil file" tabindex="0">
-                                     <input type="file" accept="application/pdf" class="file__input" id="nif_input" name="nif" />
+                                     <input type="file" accept="application/pdf" class="file__input @error('nif') is-invalid @enderror" id="nif_input" name="nif" />
                                      <span class="nif__image logo__preview " id="nif_name"></span>
                                  </label>
                              </div>
@@ -158,7 +159,7 @@
                              <!-- Adicionar documentação Tab -->
                              <div class="form-group col-lg-3 mt-4">
                                  <label class="avatar__perfil file" tabindex="0">
-                                     <input type="file" accept="application/pdf" class="file__input" id="certidao_input" name="certidao" />
+                                     <input type="file" accept="application/pdf" class="file__input @error('certidao') is-invalid @enderror" id="certidao_input" name="certidao" />
                                      <span class="certidao__image logo__preview "id="certidao_name" ></span>
                                  </label>
                              </div>

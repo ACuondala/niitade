@@ -46,7 +46,7 @@
       <div class="form__register">
         <div class="logo">
           <a href="{{ route('login.index') }}">
-            <img src="{{ asset('../assets/img/logo/logo.png') }}" />
+            <img src="{{ asset('../assets/img/logo/logo_new.png') }}" />
           </a>
           <p>Regista-te na Nitadi</p>
         </div>

@@ -38,12 +38,7 @@ class RegisterService{
 
     public function register1($request){
 
-        $request->validate([
-            'firstname'=>['required', 'string', 'max:15', 'min:3'],
-            'lastname'=>['required', 'string', 'max:15', 'min:3'],
-            'dob'=> ['required', 'date', 'before:-14 years'],
-            'images'=>['mimes:png,jpg,jpeg']
-        ]);
+
 
         if (isset($request->images)) {
             $user_image=$this->uploadFile($request,$request->images, 'nitade/users' );

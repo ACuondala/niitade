@@ -45,7 +45,7 @@
         <div class="form__register">
             <div class="logo">
                 <a href="{{ route('login.index') }}">
-                <img src="{{ asset('../assets/img/logo/logo.png') }}" />
+                <img src="{{ asset('../assets/img/logo/logo_new.png') }}" />
                 </a>
                 <p>Regista-te na Nitadi</p>
             </div>
@@ -77,8 +77,8 @@
 
                     <div class="form-group row">
                         <div class="inputBox col-lg-6 mt-2">
-                            <input type="date" name="dob" value="{{ old('dob') }}" class="form-control-lg" required @error('dob') is-invalid @enderror/>
-                            {{-- <span>Data de Nascimento</span> --}}
+                            <input type="date" name="dob" placeholder="Selecione a data" value="{{ old('dob') }}" class="form-control-lg" required @error('dob') is-invalid @enderror/>
+                           <span>Data de Nascimento</span>
                             @error('dob')
                             <div class="alert alert-warning">{{ $message }}</div>
                             @enderror
@@ -119,6 +119,7 @@
     <script src="{{ asset('assets/js/jquery-3.2.1.min.js') }}"></script>
 
     <script>
+
         //////////////////////////////////////////////////////////////////////////////////////
         const inputFilePublicitarFeed = document.querySelector("#picture__input");
         const pictureImage = document.querySelector(".picture__image");

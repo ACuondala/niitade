@@ -107,6 +107,8 @@ form button {
   transition: color 300ms ease-in-out, background 300ms ease-in-out;
 }
 
+
+
 .picture:hover {
   color: #777;
   background: #ccc;
@@ -156,6 +158,24 @@ form button {
     width: 90px;
   }
 }
+
+@media (max-width: 768px) { /* Aplica para dispositivos com largura de tela até 768px */
+    .picture {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%; /* Opcional: Torna o contêiner circular */
+      overflow: hidden; /* Impede que a imagem ultrapasse o contêiner */
+    }
+
+    .picture__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Ajusta a imagem ao contêiner sem distorção */
+      object-position: center; /* Centraliza a imagem */
+      display: block; /* Garante que a imagem seja renderizada corretamente */
+    }
+  }
+
 
 /* Tablets */
 @media (min-width: 720px) and (max-width: 1024px) {

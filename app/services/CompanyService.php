@@ -116,7 +116,7 @@ class CompanyService{
 
         })->where('users.id',Auth::user()->id)->first();
 
-        
+
         return view('company.profile.profile',[
             'companies'=>$companies,
             'kindProducts'=>KindProduct::get(),
@@ -131,10 +131,10 @@ class CompanyService{
     public function countCompanyViewProfile(Request $request){
 
         $company=Company::find($request->company);
-        
+
         if($company->user_id == $request->profile){
             $company->visitor()->sync($request->profile);
-           
+
         }
         return response()->json([
             'status'=>Response::HTTP_OK,

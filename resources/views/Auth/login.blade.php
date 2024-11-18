@@ -44,7 +44,7 @@
       <div class="banner__form_login">
         <div class="logo">
           <a href="{{ route('login.index') }}">
-            <img src="{{ asset('../assets/img/logo/logo.png') }}" />
+            <img src="{{ asset('../assets/img/logo/logo_new.png') }}" />
           </a>
           <p>Entrar para outra Dimensão</p>
         </div>

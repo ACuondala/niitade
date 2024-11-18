@@ -27,7 +27,7 @@ class RegisterController extends Controller
         return $this->registerService->register_1();
     }
 
-    public function register_1(Request $request){
+    public function register_1(RegisterRequest $request){
         return $this->registerService->register1($request);
     }
 
@@ -36,7 +36,7 @@ class RegisterController extends Controller
         return $this->registerService->register_2();
     }
 
-    public function register_2(Request $request){
+    public function register_2(RegisterRequest $request){
         return $this->registerService->register2($request);
     }
 
@@ -46,7 +46,7 @@ class RegisterController extends Controller
 
     }
 
-    public function register_3(Request $request){
+    public function register_3(RegisterRequest $request){
          return $this->registerService->register($request);
     }
 
@@ -54,7 +54,7 @@ class RegisterController extends Controller
         return $this->registerService->seeInterests();
     }
 
-    public function interest(Request $request){
+    public function interest(RegisterRequest $request){
         return $this->registerService->interests($request);
     }
 

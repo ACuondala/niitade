@@ -5,7 +5,7 @@
             <div class="item__header__search">
                 @guest
                 <a href="{{ route('guest.indxe') }}" class="logo">
-                    <img src="{{ asset('assets/img/logo/logo.png') }}" alt="" class="img-fluid" />
+                    <img src="{{ asset('assets/img/logo/logo_new.png') }}" alt="" class="img-fluid" />
                 </a>
                 @endguest
 

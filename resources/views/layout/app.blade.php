@@ -209,18 +209,18 @@
 
         @guest
                 <a href="{{ route('guest.indxe') }}" class="logo">
-                    <img src="{{ asset('assets/img/logo/logo.png') }}" alt="" class="img-fluid" />
+                    <img src="{{ asset('assets/img/logo/logo_dourado.png') }}" alt="" class="img-fluid" />
                 </a>
                 @endguest
 
                 @auth
                     @if(Auth::user()->company->count() !=0)
                         <a href="{{ route('companies.index') }}" class="logo">
-                            <img src="{{ asset('assets/img/logo/logo.png') }}" alt="" class="img-fluid " />
+                            <img src="{{ asset('assets/img/logo/logo_dourado.png') }}" alt="" class="img-fluid " />
                         </a>
                     @else
                         <a href="{{ route('guest.indxe') }}" class="logo">
-                            <img src="{{ asset('assets/img/logo/logo.png') }}" alt="" class="img-fluid" />
+                            <img src="{{ asset('assets/img/logo/logo_dourado.png') }}" alt="" class="img-fluid" />
                         </a>
                     @endif
                 @endauth
@@ -358,7 +358,7 @@
             </button>
           </div>
           <div class="modal-body">
-            <form method="POST">
+            <form>
               <input type="text" placeholder="Pesquisar..." />
               <button>
                 <i class="uil uil-search"></i>
@@ -401,6 +401,9 @@
 
     {{-- <script src="{{ asset('assets/js/main.js') }}"></script> --}}
     <script>
+        @if (session()->has('errors'))
+            $("#modal__registro__empresa").modal('show');
+        @endif
         $(".very").on("click",function(){
             @if(Auth::check())
                 // If the user is authenticated, you can redirect them or perform another action

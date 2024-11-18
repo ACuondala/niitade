@@ -112,34 +112,31 @@ aria-hidden="true"
                 </div>
            </div>
            <div class="row">
-               <div class="form-group col-lg-6 mt-4">
-                   <label class="avatar__perfil produtos" tabindex="0">
-                       <input
-                       type="file"
-                       class="file__input"
-                       id="add__logo"
-                       name="fotoCapa"
-                       />
-                       <span class="fotoCapa__image logo__preview "></span>
-                   </label>
-               </div>
+            <div class="form-group col-md-6 col-sm-12 mt-4">
+                <label class="avatar__perfil produtos" tabindex="0">
+                    <input
+                        type="file"
+                        class="file__input"
+                        id="add__logo"
+                        name="fotoCapa"
+                    />
+                    <span class="fotoCapa__image logo__preview"></span>
+                </label>
+            </div>
 
-               <div class="form-group col-lg-6 mt-4">
-                   <label class="avatar__perfil produtos" tabindex="0">
-                       <input
-                       type="file"
-                       class="file__input"
-                       id="add__logo"
-                       name="images[]"
-                       multiple
-                       />
-                       <span class="outros__image logo__preview "></span>
-                   </label>
-           </div>
-
-
-
-           </div>
+            <div class="form-group col-md-6 col-sm-12 mt-4">
+                <label class="avatar__perfil produtos" tabindex="0">
+                    <input
+                        type="file"
+                        class="file__input"
+                        id="add__logo_multiple"
+                        name="images[]"
+                        multiple
+                    />
+                    <span class="outros__image logo__preview"></span>
+                </label>
+            </div>
+        </div>
 
            <div class="form-group mt-3 inputBox col-lg-12 mt-4">
                <textarea class="form-control" name="descricao" id="" cols="10" rows="5" placeholder="descrição"></textarea>
