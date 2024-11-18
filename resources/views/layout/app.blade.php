@@ -439,6 +439,7 @@
         $(".close").modal('hide');
     });
       $(document).ready(function() {
+
         qtdInterest=$('.main__section ').data('interest');
 
         /*$('.carousel').slick({
@@ -450,17 +451,14 @@
             adaptiveHeight: true
             centerMode: true,
             focusOnSelect: true
-        });*/
-        if( qtdInterest == 0){
-            $('#interest').modal({
-                backdrop: 'static',
-                keyboard: false
-            });
-            let modalTimeout=setTimeout(function(){
-                $('#interest').modal('show');
-            },5000);
+        });
+        document.addEventListener("change", function () {
+            const tipoEmpresa = document.getElementById("naturezaNegocio");
 
-        }
+
+            // Monitorar mudanças no tipo de empresa
+            tipoEmpresa.addEventListener("change", checkInputs);
+        });
         /*$('.close').on('click',function(){
             clearTimeout(modalTimeout);
         });*/

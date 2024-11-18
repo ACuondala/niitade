@@ -97,7 +97,7 @@
                                         <button class="shadow-sm ">
                                             <i class="uil uil-map-marker-alt"></i>
                                         </button>
-                                        <button class="shadow-md dropdown__nitadi " >
+                                        {{--  <button class="shadow-md dropdown__nitadi " >
                                             <i class="uil uil-ellipsis-v"></i>
 
                                             @if ($companies->user_id != Auth::user()->id)
@@ -144,7 +144,42 @@
                                                 </div>
                                             @endif
 
+                                        </button>--}}
+                                        <button class="shadow-md dropdown__nitadi" id="dropdownButton">
+                                            <i class="uil uil-ellipsis-v"></i>
                                         </button>
+
+                                        <!-- Modal -->
+                                        <div id="dropdownModal" class="modal__nitadi">
+                                            <div class="modal__content">
+                                                <!-- Header com botão de fechar -->
+                                                <div class="modal__header">
+                                                    <h2 class="modal__title">Opções</h2>
+                                                    <button id="closeModal" class="modal__close">×</button>
+                                                </div>
+
+                                                <!-- Corpo do modal -->
+                                                <div class="modal__body">
+                                                    <ul>
+                                                        @if ($companies->user_id != Auth::user()->id)
+                                                            <li><a href="#">Denunciar</a></li>
+                                                            <li><a href="#">Bloquear Empresa</a></li>
+                                                            <li><a href="#">Bloquear Notificação</a></li>
+                                                        @else
+                                                            <li>Estatísticas:</li>
+                                                            <li><a href="#" style="font-size:75%">Nº de vendas:</a></li>
+                                                            <li><a href="#" style="font-size:75%">Nº de Likes:</a></li>
+                                                            <li><a href="#" style="font-size:65%">Total Facturado:</a></li>
+                                                            <li>
+                                                                <a href="#" style="color:red;font-size:70%;">Eliminar Empresa
+                                                                    <i class="fa fa-trash" style="color:red;"></i>
+                                                                </a>
+                                                            </li>
+                                                        @endif
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -258,7 +293,33 @@
 @section('script')
 
      <script>
+
+
+
+
         $(document).ready(function(){
+
+            const dropdownButton = document.getElementById("dropdownButton");
+            const modal = document.getElementById("dropdownModal");
+            const closeModal = document.getElementById("closeModal");
+
+             // Abrir modal ao clicar no botão
+             dropdownButton.addEventListener("click", () => {
+                modal.style.display = "flex"; // Exibir modal
+            });
+
+            // Fechar modal ao clicar no botão fechar
+            closeModal.addEventListener("click", () => {
+                modal.style.display = "none"; // Ocultar modal
+            });
+
+            // Fechar modal ao clicar fora do conteúdo
+            window.addEventListener("click", (event) => {
+                if (event.target === modal) {
+                    modal.style.display = "none"; // Ocultar modal
+                }
+            });
+
             let visitor={{ Auth::user()->id }};
             let companies={{ $companies->id }};
             //console.log(visitor);
@@ -271,7 +332,7 @@
                     company:companies
                 },
                 success: function(response) {
-                    console.log("Profile view counted or already counted");
+
                 }
             });
 

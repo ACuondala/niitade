@@ -35,7 +35,7 @@
                          </div>
                          <div class="row justify-content-center">
                              <div class="form-group inputBox col-lg-4 mt-4">
-                                 <select name="tipo_empresa_id" class="form-control-lg" value="{{ old('tipo_empresa_id') }}" id="naturezaNegocio" required>
+                                 <select name="tipo_empresa_id" class="form-control-lg tipo__empresa" value="{{ old('tipo_empresa_id') }}" id="naturezaNegocio" required>
                                      <option value="">Natureza do Negócio</option>
                                      @foreach ($kind_companies as $kind)
                                          <option value="{{ $kind->id }}">{{ $kind->kind }}</option>
@@ -178,7 +178,7 @@
 
                          <div class="row">
                              <div class="form-group inputBox col-lg-4 mt-4">
-                                 <input type="submit" value="Criar empresa" class="form-control-lg" />
+                                 <input type="submit" id="submit_button" value="Criar empresa" class="form-control-lg" />
                              </div>
                          </div>
                      </form>

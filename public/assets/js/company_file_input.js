@@ -50,7 +50,21 @@ $(".file").hide("slow");
         if (tipoNegocio == 1) {
             $(".file").show("slow");
             //$(".otherFile").show("slow");
+            const submitButton = document.getElementById("submit_button");
+            const fileInputs = document.querySelectorAll(".file__input");
 
+            function checkInputs() {
+                // Verificar se todos os campos têm arquivos selecionados
+                const allFilled = Array.from(fileInputs).every(input => input.files.length > 0);
+                console.log(allFilled);
+                // Ativar/desativar o botão com base no preenchimento
+                submitButton.disabled = tipoEmpresa.value !== "Formal" || !allFilled;
+            }
+
+            // Monitorar mudanças nos inputs de arquivo
+            fileInputs.forEach(input => {
+                input.addEventListener("change", checkInputs);
+            });
         } else {
             $(".file").hide("slow");
             //$(".otherFile").hide("slow");
