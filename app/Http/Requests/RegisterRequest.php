@@ -24,14 +24,14 @@ class RegisterRequest extends FormRequest
     public function rules()
     {
         return [
-            'firstname'=>['required', 'string', 'max:15', 'min:3'],
-            'lastname'=>['required', 'string', 'max:15', 'min:3'],
-            'phone'=>['required','integer','unique:users','digits:9'],
-            'dob'=> ['required', 'date', 'before:14'],
-            'password'=>['required'],
-            'confirm'=>['same:password'],
-            'otherphone'=>['required','integer','digits:9'],
-            'images'=>['mimes:png,jpg']
+            'firstname'=>['sometimes','required', 'string', 'max:15', 'min:3'],
+            'lastname'=>['sometimes','required', 'string', 'max:15', 'min:3'],
+            'phone'=>['sometimes','required','integer','unique:users','digits:9'],
+            'dob'=> ['sometimes','required', 'date', 'after_or_equal:14'],
+            'password'=>['sometimes','required'],
+            'confirm'=>['sometimes','same:password'],
+            'otherphone'=>['sometimes','required','integer','digits:9'],
+            'images'=>['sometimes','mimes:png,jpg']
             //'email',
             /*'gender'=>['required'],
             'dob'=> ['required', 'date', 'before:-18 years'],
@@ -46,7 +46,7 @@ class RegisterRequest extends FormRequest
 
     public function messages(){
         return [
-            'dob.before'=>'Idade minima: 14 anos',
+            'dob.after_or_equal'=>'Idade minima: 14 anos',
             'password.required'=>'campo obrigatório',
             'confirm.same'=>'Password diferentes',
             'phone.unique'=>'Este número já existe',
